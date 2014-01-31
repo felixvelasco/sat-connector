@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+	<!-- En este XML se especificaran los campos de cada mensaje Sat que no deben ser incluidos a la hora de 
+	calcular el nombre del fichero que se genera con los datos recuperados del Host cuando se usa un modo de 
+	comunicacion DUMMY-->
+		<specialMsgs>
+			<!--message name="001595" version="00000003">
+				<fields>
+					<field name="SXVALUE"/>
+				</fields>
+			</message-->	
+		</specialMsgs>
+	

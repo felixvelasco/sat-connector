@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>                                                                                                             
+                                                                                                                                                        
+<configuration>                                                                                                                                         
+	<!-- Nombre y version del mensaje de definicion de mensajes, y modo de                                                                                
+	comunicacion utilizado para realizar peticiones de definiciones -->                                                                                   
+	<defMsgName>001350</defMsgName>                                                                                                                       
+	<defMsgVersion>00000001</defMsgVersion>                                                                                                               
+	<defMsgConfig>SATDEF</defMsgConfig>                                                                                                                    
+		                                                                                                                                                    
+	<!-- Datos sensibles (ocultados en los mensajes de traza) -->                                                                                         
+	<sensibleFields>                                                                                                                                      
+		<sensible>SXPASWI</sensible>                                                                                                                        
+		<sensible>SXPASWIN</sensible>                                                                                                                       
+		<sensible>AT24A</sensible>                                                                                                                          
+		<sensible>AT24B</sensible>                                                                                                                          
+		<sensible>LIT24</sensible>                                                                                                                          
+		<sensible>LITE24</sensible>                                                                                                                         
+	</sensibleFields>                                                                                                                                     
+                                                                                                                                                        
+	<!-- Log de aplicaciones y Equivalencia de niveles de logs BankSphere y Partenon -->	                                                                
+	                                                                                                                                                 
+	<applicationLog activated="false">                                                                                                                     
+		<!-- <defaultLevelEquivalence> </defaultLevelEquivalence>                                                                                                
+		<levelEquivalence appLogLevel="VeryHigh" hostLogLevel="S"/>                                                                                         
+		<levelEquivalence appLogLevel="High" hostLogLevel="S"/>                                                                                             
+		<levelEquivalence appLogLevel="CallHigh" hostLogLevel="P"/>                                                                                         
+		<levelEquivalence appLogLevel="StartMedium" hostLogLevel="P"/>                                                                                      
+		<levelEquivalence appLogLevel="EndMedium" hostLogLevel="M"/>                                                                                        
+		<levelEquivalence appLogLevel="Medium" hostLogLevel="E"/>                                                                                           
+		<levelEquivalence appLogLevel="Low" hostLogLevel="E"/>                                                                                              
+		<levelEquivalence appLogLevel="OIStartEnd" hostLogLevel="E"/>                                                                                       
+		<levelEquivalence appLogLevel="Off" hostLogLevel="N"/>   -->                                                                                           
+	</applicationLog>                                                                                                                                     
+                                                                                                                                               
+	                                                                                                                                                      
+	<functionalLog name="functionalLogSat" class="com.isb.rigel.common.functionalLog.HostFunctionalLogImpl">                                              
+		<configuration>                                                                                                                                     
+			<recordMode>no</recordMode>                                                                                                                       
+			<renderer class="com.isb.rigel.srvcimpl.sat.SatMsgRendererXml"/>                                                                                  
+		</configuration>	                                                                                                                                  
+	</functionalLog>                                                                                                                                      
+		                                                                                                                                                    
+	<!-- Modos de configuracion del servicio Sat -->                                                                                                      
+	<satModes>                                                                                                                                            
+		<!-- Esto no son componentes -->                                                                                                                    
+		<mode name="SAT01" class="com.isb.rigel.srvcimpl.sat.SatMode">                                                                                      
+			<configuration>                                                                                                                                   
+				<link>TCP04</link>                                                                                                                              
+				<renderer>RENDERER_V4</renderer>                                                                                                                
+				<parser>PARSER_V0</parser>                                                                                                                      
+				<logicalChannel>0015</logicalChannel>                                                                                                           
+				<!-- <physicalChannel>0015</physicalChannel>       -->        
+				<physicalChannel>0026</physicalChannel>                                                                                          
+				<separator>¤</separator>                                                                                                                        
+				<language>E</language>        
+			</configuration>                                                                                                                                  
+		</mode>                                                                                                                                             
+		<mode name="SAT03" class="com.isb.rigel.srvcimpl.sat.SatMode">                                                                                      
+			<configuration>                                                                                                                                   
+				<link>TCP03</link>                                                                                                                              
+				<renderer>RENDERER_V4</renderer>                                                                                                                
+				<parser>PARSER_V0</parser>                                                                                                                      
+				<logicalChannel>0019</logicalChannel>                                                                                                           
+				<physicalChannel>0019</physicalChannel>                                                                                                         
+				<separator>¤</separator>                                                                                                                        
+				<language>E</language>                                                                                                                          
+			</configuration>                                                                                                                                  
+		</mode>                                                                                                                                             
+		<mode name="SAT04" class="com.isb.rigel.srvcimpl.sat.SatMode">                                                                                      
+			<configuration>                                                                                                                                   
+				<link>TCP04</link>                                                                                                                              
+				<renderer>RENDERER_V4</renderer>                                                                                                                
+				<parser>PARSER_V0</parser>                                                                                                                      
+				<logicalChannel>0019</logicalChannel>                                                                                                           
+				<physicalChannel>0019</physicalChannel>                                                                                                         
+				<separator>¤</separator>                                                                                                                        
+				<language>E</language>                                                                                                                          
+			</configuration>                                                                                                                                  
+		</mode>                                                                                                                                             
+		                                                                                                                                                    
+		<!-- SAT03 + IP del usuario y usuario internet -->                                                                                                  
+		<mode name="SAT05" class="com.isb.rigel.srvcimpl.sat.SatMode">                                                                                      
+			<configuration>                                                                                                                                   
+				<link>TCP03</link>                                                                                                                              
+				<renderer>RENDERER_V4</renderer>                                                                                                                
+				<parser>PARSER_V0</parser>                                                                                                                      
+				<logicalChannel>0001</logicalChannel>                                                                                                           
+				<physicalChannel>0019</physicalChannel>                                                                                                         
+				<separator>¤</separator>                                                                                                                        
+				<language>E</language>                                                                                                                          
+			</configuration>                                                                                                                                  
+		</mode>                                                                                                                                             
+                                                                                                                                                        
+		<!-- SAT04 + IP del usuario y usuario internet -->                                                                                                  
+		<mode name="SAT06" class="com.isb.rigel.srvcimpl.sat.SatMode">                                                                                      
+			<configuration>                                                                                                                                   
+				<link>TCP04</link>                                                                                                                              
+				<renderer>RENDERER_V4</renderer>                                                                                                                
+				<parser>PARSER_V0</parser>                                                                                                                      
+				<logicalChannel>0001</logicalChannel>                                                                                                           
+				<!-- physicalChannel>0019</physicalChannel>         -->       
+				<physicalChannel>0026</physicalChannel>                                                                                                  
+				<separator>¤</separator>                                                                                                                        
+				<language>E</language>                                                                                                                          
+			</configuration>                                                                                                                                  
+		</mode>                                                                                                                                             
+		
+		<!-- SAT04 + IP del usuario y usuario internet -->                                                                                                  
+		<mode name="SAT07" class="com.isb.rigel.srvcimpl.sat.SatMode">                                                                                      
+			<configuration>                                                                                                                                   
+				<link>TCP04</link>                                                                                                                              
+				<renderer>RENDERER_V4</renderer>                                                                                                                
+				<parser>PARSER_V0</parser>                                                                                                                      
+				<logicalChannel>5000</logicalChannel>                                                                                                           
+				<physicalChannel>0019</physicalChannel>                                                                                                         
+				<separator>¤</separator>                                                                                                                        
+				<language>E</language>                                                                                                                          
+			</configuration>                                                                                                                                  
+		</mode>		
+		
+		<!-- SAT06 token BKS logado + IP del usuario y usuario internet  -->                                                                                                 
+		<mode name="SAT08_tokenBKS_logged" class="com.isb.rigel.srvcimpl.sat.SatMode">                                                                                      
+			<configuration>                                                                                                                                   
+				<link>TCP05</link>                                                                                                                              
+				<renderer>RENDERER_V4</renderer>                                                                                                                
+				<parser>PARSER_V0</parser>                                                                                                                      
+				<logicalChannel>0026</logicalChannel>                                                                                                           
+				<physicalChannel>0026</physicalChannel>                                                                                                         
+				<separator>¤</separator>                                                                                                                        
+				<language>E</language>                                                                                                                          
+			</configuration>                                                                                                                                  
+		</mode>                                                                                                                                             
+		
+		<!-- SAT06 token BKS generico + IP del usuario y usuario internet generico      -->                                                                                           
+		<mode name="SAT09_tokenBKS_generic" class="com.isb.rigel.srvcimpl.sat.SatMode">                                                                                      
+			<configuration>                                                                                                                                   
+				<link>TCP06</link>                                                                                                                              
+				<renderer>RENDERER_V4</renderer>                                                                                                                
+				<parser>PARSER_V0</parser>                                                                                                                      
+				<logicalChannel>0026</logicalChannel>                                                                                                           
+				<physicalChannel>0026</physicalChannel>                                                                                                         
+				<separator>¤</separator>                                                                                                                        
+				<language>E</language>                                                                                                                          
+			</configuration>                                                                                                                                  
+		</mode>		
+		 
+                                                                                                                                                        
+		<!-- SATDEF Modo para la obtencion del mensaje de definicion de mensajes -->                                                                                               
+		<mode name="SATDEF" class="com.isb.rigel.srvcimpl.sat.SatMode">                                                                                    
+			<configuration>                                                                                                                                   
+				<link>TCPDEF</link>                                                                                                                            
+				<renderer>RENDERER_V4</renderer>                                                                                                                
+				<parser>PARSER_V0</parser>                                                                                                                      
+				<logicalChannel>0015</logicalChannel>                                                                                                           
+				<physicalChannel>0015</physicalChannel>                                                                                                         
+				<separator>¤</separator>                                                                                                                        
+				<language>E</language>                                                                                                                          
+			</configuration>                                                                                                                                  
+		</mode>	
+				   	                                                                                                                                         
+	</satModes>   
+	                                                                                                                                        
+	                                                                                                                                                      
+	                                                                                                                                                      
+	<!-- CONFIGURACIONES DE LOS COMPONENTES UTILIZADOS POR EL SERVICIO SAT -->                                                                            
+	                                                                                                                                                      
+	<!-- Cache de mensajes de definicion -->                                                                                                              
+	<cache name="satDefsCache" class="com.isb.rigel.common.cache.LruCacheImpl">                                                                           
+		<configuration>                                                                                                                                     
+			<capacity>50</capacity>                                                                                                                           
+			<!-- Modos de expiración: off, creation, inactivity -->                                                                                           
+			<expirationMode>inactivity</expirationMode>                                                                                                       
+			<!-- Tiempo expresado en milisegundos -->                                                                                                         
+			<defaultTimeSlide>900000</defaultTimeSlide>                                                                                                       
+		</configuration>                                                                                                                                    
+	</cache>                                                                                                                                              
+	                                                                                                                                                      
+	<!-- Tipos de enlaces de comunicacion utilizados por el servicio -->                                                                                  
+	<commLinks>                                                                                                                                           
+                                                                                                                                                        
+		<commonLinkConfiguration>                                                                                                                           
+			<timeout>24000</timeout>
+			<encoding>ISO-8859-1</encoding>                                                                                                                        
+			<codeHandling>                                                                                                                                    
+				<codeMessageId>EZY</codeMessageId>                                                                                                              
+				<noRetryCodes>                                                                                                                                  
+					<code>1316E</code>                                                                                                                            
+					<code>1303I</code>                                                                                                                            
+				</noRetryCodes>                                                                                                                                 
+			</codeHandling>                                                                                                                                   
+			<!-- desarrollo-->                                                                                                                               
+            <socket>
+				<address>${aeb.sat.socket.address1/dbd1.isban.dev.corp}</address>
+                <port>${aeb.TrxOp.socket.port1/5144}</port>
+            </socket>
+			<sslParams>
+				<secureConnection>false</secureConnection>
+				<checkRevokedHostCertificate>false</checkRevokedHostCertificate>
+				<checkRevocationMethodPriority>OCSPCRL</checkRevocationMethodPriority>
+				<checkActiveHostCertificate>true</checkActiveHostCertificate>
+				<checkDNSHost>false</checkDNSHost>
+			</sslParams>                                                                                                                                            
+			                                                                                                                                                  
+			<!-- implantacion -->                                                                                                                             
+			<!--socket>                                                                                                                                       
+				<address>cpub.sscc.banesto.es</address>                                                                                                         
+				<port>5300</port>                                                                                                                               
+			</socket-->                                                                                                                                       
+		</commonLinkConfiguration>                                                                                                                          
+                                                                                                                                                        
+		<link name="TCP01" class="com.isb.rigel.srvcimpl.sat.SatTcpIpLink01">                                                                               
+			<configuration cfg:include-url="local:#/configuration/commLinks/commonLinkConfiguration"  xmlns:cfg="http://rigel/configuration/XMLInclude" />    
+		</link>                                                                                                                                             
+                                                                                                                                                        
+		<link name="TCP03" class="com.isb.rigel.srvcimpl.sat.SatTcpIpLink03">                                                                               
+			<configuration cfg:include-url="local:#/configuration/commLinks/commonLinkConfiguration"  xmlns:cfg="http://rigel/configuration/XMLInclude" />    
+		</link>                                                                                                                                             
+                                                                                                                                                        
+		<link name="TCP04" class="com.isb.rigel.srvcimpl.sat.SatTcpIpLink04">                                                                               
+			<configuration cfg:include-url="local:#/configuration/commLinks/commonLinkConfiguration"  xmlns:cfg="http://rigel/configuration/XMLInclude" />    
+		</link>                                               
+		
+		<link name="TCP05" class="com.isb.rigel.srvcimpl.sat.SatTcpIpLink05">                                                                               
+			<configuration cfg:include-url="local:#/configuration/commLinks/commonLinkConfiguration"  xmlns:cfg="http://rigel/configuration/XMLInclude" />    
+		</link>                                                                                                                                             
+                                                                                                                                                        
+		<link name="TCP06" class="com.isb.rigel.srvcimpl.sat.SatTcpIpLink06">                                                                               
+			<configuration cfg:include-url="local:#/configuration/commLinks/commonLinkConfiguration"  xmlns:cfg="http://rigel/configuration/XMLInclude" />    
+		</link>                                                                                                                                             
+		                                                                                              
+		                                                                                                                                                    
+		<link name="TCPDEF" class="com.isb.rigel.srvcimpl.sat.SatTcpIpLink04">                                                                             
+			<configuration>                                                                                                                                   
+					<timeout>24000</timeout> 
+					<encoding>ISO-8859-1</encoding>                                                                                                                     
+				<codeHandling>                                                                                                                                  
+					<codeMessageId>EZY</codeMessageId>                                                                                                            
+					<noRetryCodes>                                                                                                                                
+						<code>1316E</code>                                                                                                                          
+						<code>1303I</code>                                                                                                                          
+					</noRetryCodes>                                                                                                                               
+				</codeHandling>                                                                                                                                 
+                <socket>
+	                <address>dbd1.isban.dev.corp</address>
+	                <port>5100</port>
+                </socket>
+                <socket>
+                    <address>dbd1.isban.dev.corp</address>
+                    <port>5100</port>
+                </socket>
+			</configuration>                                                                                                                                  
+		</link>                                                                                                                                             
+		                                                                                                                                                    
+		<commonDummyConfiguration xmlns:cfg="http://rigel/configuration/XMLInclude">                                                                        
+			<dummyFilesDir>${aeb.basepath}/SatFiles/SatFilesDummy</dummyFilesDir>                                                                             
+			<specialMsgsFile cfg:include-url="rel:SatSpecialMsgsFile.xml"/>                                                                                   
+                                                                                                                                                        
+                                                                                                                                                        
+			<cache name="MsgCache" class="com.isb.rigel.common.cache.LruCacheImpl">                                                                           
+				<configuration>                                                                                                                                 
+					<capacity>50</capacity>                                                                                                                       
+					<!-- Modos de expiración: off, creation, inactivity -->                                                                                       
+					<expirationMode>inactivity</expirationMode>                                                                                                   
+					<!-- Tiempo expresado en milisegundos -->                                                                                                     
+					<defaultTimeSlide>900000</defaultTimeSlide>                                                                                                   
+				</configuration>                                                                                                                                
+			</cache>                                                                                                                                          
+                                                                                                                                                        
+			<fileExtension>xml</fileExtension>                                                                                                                
+			<renderer class="com.isb.rigel.srvcimpl.sat.SatMsgRendererXml"/>                                                                                  
+			<parser class="com.isb.rigel.srvcimpl.sat.SatMsgParserXml"/>                                                                                      
+                                                                                                                                                        
+			<!-- fileExtension>dummy</fileExtension -->                                                                                                       
+			<!-- renderer class="com.isb.rigel.srvcimpl.sat.SatMsgRendererBinary"/ -->                                                                        
+			<!-- parser class="com.isb.rigel.srvcimpl.sat.SatMsgParserBinary"/ -->                                                                            
+		</commonDummyConfiguration>                                                                                                                         
+                                                                                                                                                        
+		<!-- Sólo hay un DUMMY_LINK para todos los posibles enlaces reales. Lo que habría que hacer es cambiar en el                                        
+		realLink el nombre del enlace real -->                                                                                                              
+		<link name="DUMMY_TCP" class="com.isb.rigel.srvcimpl.sat.SatDummyLink">                                                                             
+			<configuration>                                                                                                                                   
+				<recordMode>no</recordMode>                                                                                                                     
+				<workMode>enhanced</workMode> <!-- standard, enhanced, iteration -->                                                                            
+                                                                                                                                                        
+				<!-- Configuracion de componente interno -->                                                                                                    
+				<msgExternalizer name="MsgExternalizer" class="com.isb.rigel.srvcimpl.sat.SatDummyMsgExternalizerFile">                                         
+					<configuration cfg:include-url="local:#/configuration/commLinks/commonDummyConfiguration" xmlns:cfg="http://rigel/configuration/XMLInclude" />
+				</msgExternalizer>                                                                                                                              
+				                                                                                                                                                
+				<!-- Configuracion de componente interno -->                                                                                                    
+		        <realLink cfg:include-url="local:#/configuration/commLinks/link@name='TCP04'"  xmlns:cfg="http://rigel/configuration/XMLInclude" />         
+			</configuration>                                                                                                                                  
+		</link>                                                                                                                                             
+	</commLinks>                                                                                                                                          
+	                                                                                                                                                      
+	<!-- Tipos de renderizadores para mensajes (usados en comunicacion con Host) -->                                                                      
+	<commRenderers>                                                                                                                                       
+		<!-- Renderer para comunicaciones que cumplan el protocolo V0 de envio -->                                                                          
+		<renderer name="RENDERER_V0" class="com.isb.rigel.srvcimpl.sat.SatMsgRendererHost">                                                                 
+			<configuration>                                                                                                                                   
+				<headerRenderer class="com.isb.rigel.srvcimpl.sat.SatHeaderRendererV0Impl"/>                                                                    
+				<bodyRenderer class="com.isb.rigel.srvcimpl.sat.SatBodyRendererImpl"/>                                                                          
+			</configuration>                                                                                                                                  
+		</renderer>                                                                                                                                         
+		                                                                                                                                                    
+		<!-- Renderer para comunicaciones que cumplan el protocolo V2 de envio -->                                                                          
+		<renderer name="RENDERER_V2" class="com.isb.rigel.srvcimpl.sat.SatMsgRendererHost">                                                                 
+			<configuration>                                                                                                                                   
+				<headerRenderer class="com.isb.rigel.srvcimpl.sat.SatHeaderRendererV2Impl"/>                                                                    
+				<bodyRenderer class="com.isb.rigel.srvcimpl.sat.SatBodyRendererImpl"/>                                                                          
+			</configuration>                                                                                                                                  
+		</renderer>                                                                                                                                         
+                                                                                                                                                        
+		<!-- Renderer para comunicaciones que cumplan el protocolo V3 de envio -->                                                                          
+		<renderer name="RENDERER_V3" class="com.isb.rigel.srvcimpl.sat.SatMsgRendererHost">                                                                 
+			<configuration>                                                                                                                                   
+				<headerRenderer class="com.isb.rigel.srvcimpl.sat.SatHeaderRendererV3Impl"/>                                                                    
+				<bodyRenderer class="com.isb.rigel.srvcimpl.sat.SatBodyRendererImpl"/>                                                                          
+			</configuration>                                                                                                                                  
+		</renderer>		                                                                                                                                      
+		                                                                                                                                                    
+		<!-- Renderer para comunicaciones que cumplan el protocolo V4 de envio -->                                                                          
+		<renderer name="RENDERER_V4" class="com.isb.rigel.srvcimpl.sat.SatMsgRendererHost">                                                                 
+			<configuration>                                                                                                                                   
+				<headerRenderer class="com.isb.rigel.srvcimpl.sat.SatHeaderRendererV4Impl"/>                                                                    
+				<bodyRenderer class="com.isb.rigel.srvcimpl.sat.SatBodyRendererImpl"/>                                                                          
+			</configuration>                                                                                                                                  
+		</renderer>	                                                                                                                                        
+		                                                                                                                                                    
+	</commRenderers>                                                                                                                                      
+		                                                                                                                                                    
+	<!-- Tipos de parsers para mensajes (usados en comunicacion con Host) -->                                                                             
+	<commParsers>                                                                                                                                         
+		<!-- Parser para comunicaciones que cumplan el protocolo V0 de recepcion -->                                                                        
+		<parser name="PARSER_V0" class="com.isb.rigel.srvcimpl.sat.SatMsgParserHost">                                                                       
+			<configuration>                                                                                                                                   
+				<headerParser class="com.isb.rigel.srvcimpl.sat.SatHeaderParserV0Impl"/>                                                                        
+				<bodyParser class="com.isb.rigel.srvcimpl.sat.SatBodyParserNotNumberFormatErrors"/>                                                                              
+			</configuration>                                                                                                                                  
+		</parser>                                                                                                                                           
+	</commParsers>                                                                                                                                        
+	                                                                                                                                                      
+</configuration>                                                                                                                                        

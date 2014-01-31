@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="org.eclipse.ant.core" default="makeJars" basedir=".">
+
+	<!-- Propiedades ANT que establecen los directorios de trabajo -->
+	<property name="jars.dir"             value="C:\TEMP\HDE"/>
+    <property name="Rigel.classes.dir"    value="./../bin"/>     
+    <property name="Rigel.prop.dir"    value="./../../Propiedades_Runtime/bin"/>
+    <property name="Rigel.configuration.dir" value="./../../RigelJars_Configuration/Vega"/>
+    <property name="com.isb.bs.bl.base.dir" value="./../../com.isb.bs.bl.base/bin"/> 
+
+<!--    <property name="com.isb.bs.common.dir" value="./../../com.isb.bs.common/bin"/> -->
+
+
+    <!-- Juego de ficheros que van en el JAR de CORE -->
+    <fileset dir="${Rigel.classes.dir}" casesensitive="no" id="classes.jar.SAT">
+      <patternset>
+        <include name="com/isb/rigel/core/**/*.*"/>
+        <include name="com/isb/rigel/common/**/*.*"/>
+        <include name="com/isb/rigel/gaia/**/*.*"/>
+        <include name="com/isb/rigel/aeb/data/**/*.*"/>
+      	<include name="com/isb/rigel/services/cei/**/*.*"/>
+        <include name="com/isb/rigel/services/applogs/**/*.*"/>
+        <include name="com/isb/rigel/srvcimpl/applogs/**/*.*"/>
+        <include name="com/isb/rigel/services/access/UserAccessControlService.*"/>
+        <include name="com/isb/rigel/services/security/common/AnonimousUserException.*"/>
+        <include name="com/isb/rigel/services/security/common/SecurityException.*"/>
+	    <include name="com/isb/rigel/services/logs/LogsService.*"/>
+        <include name="com/isb/rigel/services/sat/**/*.*"/>
+        <include name="com/isb/rigel/srvcimpl/sat/**/*.*"/>
+      	<include name="com/isb/rigel/services/security/externalization/*.*"/>
+      	<include name="com/isb/bs/bl/base/**/*.*"/>     
+        <include name="com/isb/bs/common/**/*.*"/>   
+      </patternset>
+    </fileset>
+    
+	  <!-- properties	   -->  
+     <!-- Juego de ficheros que van en el JAR de CORE -->
+        <fileset dir="${Rigel.prop.dir}" casesensitive="no" id="prop.jar.SAT">
+      <patternset>
+        <include name="com/isb/rigel/core/**/*.*"/>
+        <include name="com/isb/rigel/common/**/*.*"/>
+        <include name="com/isb/rigel/gaia/**/*.*"/>
+        <include name="com/isb/rigel/aeb/data/**/*.*"/>
+        <include name="com/isb/rigel/services/applogs/**/*.*"/>
+        <include name="com/isb/rigel/srvcimpl/applogs/**/*.*"/>
+        <include name="com/isb/rigel/services/access/UserAccessControlService*.*"/>
+        <include name="com/isb/rigel/services/security/common/AnonimousUserException*.*"/>
+        <include name="com/isb/rigel/services/security/common/SecurityException*.*"/>
+	    <include name="com/isb/rigel/services/logs/LogsService*.*"/>
+        <include name="com/isb/rigel/services/sat/**/*.*"/>
+        <include name="com/isb/rigel/srvcimpl/sat/**/*.*"/>
+        <include name="com/isb/bs/bl/base/**/*.*"/>   
+        <include name="com/isb/bs/common/**/*.*"/>   
+      </patternset>
+    </fileset>   
+    
+    <!-- *********************************************************** -->
+    <!-- TARGET que se encarga de la generacion de los JARS de Rigel -->
+    <!-- *********************************************************** -->
+    <target name="makeJars">
+
+        <echo>
+        ******************************************************************************
+        Este script ANT genera varios ficheros JAR de la arquitectura Rigel.
+        El directorio donde seran depositados es: ${jars.dir}.
+        Los JARs generados son:
+        
+            1.	- SatConnector.jar				-> Paquetes "core", "common" y "gaia" de Rigel.
+        ******************************************************************************
+
+        </echo>
+
+	    <property name="sat" value="com.isb.vega.wrapper.rigel.sat"/> 
+
+        <!-- Aseguramos que el directorio de salida existe -->
+        <mkdir dir="${jars.dir}"/>
+        
+        <!-- Creacion del JAR de JAR de CORE -->
+        <mkdir dir="${jars.dir}/${sat}"/>        
+        <jar jarfile="${jars.dir}/${sat}/SatConnector.jar" update="yes">
+            <fileset refid="classes.jar.SAT"/>
+            <fileset refid="prop.jar.SAT"/>            
+        </jar>
+       
+		<!-- Copia los ficheros de configuracion de los servicios -->
+
+        <copy file="${Rigel.configuration.dir}/sat.xml" todir="${jars.dir}/${sat}"/>
+        <copy file="${Rigel.configuration.dir}/SatSpecialMsgsFile.xml" todir="${jars.dir}/${sat}"/>
+    
+    </target>
+
+</project>
