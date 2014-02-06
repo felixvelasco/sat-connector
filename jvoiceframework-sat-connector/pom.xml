@@ -1,28 +1,50 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-  
-  	<parent>
-		<groupId>com.vectorsf</groupId>
-		<artifactId>jvoiceframework</artifactId>
-		<version>1.0-SNAPSHOT</version>
-	</parent>
 
+
+	<version>1.1.0-SNAPSHOT</version>
+	<groupId>com.vectorsf</groupId>
 	<artifactId>jvoiceframework-sat-connector</artifactId>
 	<name>jvoiceframework-sat-connector</name>
-  
-  <dependencies>
-	<dependency>
-		<artifactId>SatConnector</artifactId>
-		<groupId>SatConnector</groupId>
-		<version>0.1</version>
-		<scope>system</scope>
-		<systemPath>${basedir}/lib/SatConnector.jar</systemPath>
-	</dependency>
-	<dependency>
-		<groupId>com.vectorsf</groupId>
-		<artifactId>jvoiceframework-core</artifactId>
-		<version>1.0-SNAPSHOT</version>
-	</dependency>
-  </dependencies>
+
+	<dependencies>
+		<dependency>
+			<artifactId>SatConnector</artifactId>
+			<groupId>SatConnector</groupId>
+			<version>1.0.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.vectorsf</groupId>
+			<artifactId>jvoiceframework-core</artifactId>
+			<version>1.1.0-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.11</version>
+		</dependency>
+	</dependencies>
+	<repositories>
+		<repository>
+			<id>jvoice</id>
+			<name>jVoice Maven Repository</name>
+			<url>http://repository-felixvelasco.forge.cloudbees.com/release/</url>
+			<layout>default</layout>
+		</repository>
+	</repositories>
+	<distributionManagement>
+		<repository>
+			<id>jvoice</id>
+			<name>jVoice Maven Repository</name>
+			<url>dav:https://repository-felixvelasco.forge.cloudbees.com/release/</url>
+			<layout>default</layout>
+		</repository>
+		<snapshotRepository>
+			<id>jvoice-snapshots</id>
+			<name>jVoice Maven Repository</name>
+			<url>dav:https://repository-felixvelasco.forge.cloudbees.com/snapshot/</url>
+			<layout>default</layout>
+		</snapshotRepository>
+	</distributionManagement>
 </project>

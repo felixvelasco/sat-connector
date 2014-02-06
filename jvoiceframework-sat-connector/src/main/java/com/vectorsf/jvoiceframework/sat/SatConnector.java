@@ -2,7 +2,6 @@ package com.vectorsf.jvoiceframework.sat;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
-import javax.annotation.Resource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -41,7 +40,7 @@ public class SatConnector {
 	/** sat log level */
 	private String satLogLevel = "INFO";
 	
-	@Resource(name="satConfig")
+	@Autowired
 	private AppConfig satConfig;
 	
 	/**

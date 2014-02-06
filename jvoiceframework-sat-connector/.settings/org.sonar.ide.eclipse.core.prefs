@@ -1,6 +1,6 @@
 analyseLocally=false
 eclipse.preferences.version=1
-extraProperties=sonar.dynamicAnalysis\=true\r\nsonar.java.coveragePlugin\=jacoco
+extraProperties=
 projectKey=com.vectorsf\:jvoiceframework-sat-connector
 serverUrl=http\://180.105.4.105\:8880/sonar
 version=2
