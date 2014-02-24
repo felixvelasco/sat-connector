@@ -33,9 +33,9 @@
 	</dependencies>
 	<repositories>
 		<repository>
-			<id>jvoice</id>
+			<id>jvoiceSnapshot</id>
 			<name>jVoice Maven Repository</name>
-			<url>http://repository-felixvelasco.forge.cloudbees.com/release/</url>
+			<url>http://repository-felixvelasco.forge.cloudbees.com/snapshot/</url>
 			<layout>default</layout>
 		</repository>
 	</repositories>

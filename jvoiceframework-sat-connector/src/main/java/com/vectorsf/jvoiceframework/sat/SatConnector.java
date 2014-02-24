@@ -1,9 +1,13 @@
 package com.vectorsf.jvoiceframework.sat;
 
+import java.io.File;
+
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Service;
 
 import com.isb.rigel.gaia.services.SimpleServiceManager;
@@ -20,7 +24,8 @@ import com.vectorsf.jvoiceframework.core.log.Logger;
  * @author mvinuesa
  *
  */
- @Service
+@Service
+@Scope(value = "singleton", proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class SatConnector {
 
 	@Log
@@ -51,7 +56,13 @@ public class SatConnector {
 		satService = new SatServiceImpl();
 		try {
 			readConfig();
-			String satURL = this.getClass().getClassLoader().getResource(satCfg).toExternalForm();
+			String satURL = null;
+			if (this.getClass().getClassLoader().getResource(satCfg) != null) {
+				satURL = this.getClass().getClassLoader().getResource(satCfg).toExternalForm();
+			} else {
+				satURL = new File(satCfg).toURI().toURL().toExternalForm();
+			}
+			
 			if (!System.getProperty("file.separator").equals("/")) {
 				satURL  = satURL.replace('/', '\\');
 			}
