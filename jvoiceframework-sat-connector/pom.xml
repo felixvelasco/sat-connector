@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 
-	<version>1.1.0-SNAPSHOT</version>
+	<version>1.1.0</version>
 	<groupId>com.vectorsf</groupId>
 	<artifactId>jvoiceframework-sat-connector</artifactId>
 	<name>jvoiceframework-sat-connector</name>
@@ -17,7 +17,7 @@
 		<dependency>
 			<groupId>com.vectorsf</groupId>
 			<artifactId>jvoiceframework-core</artifactId>
-			<version>1.1.0-SNAPSHOT</version>
+			<version>[1.1.0,2.0.0)</version>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
@@ -33,9 +33,9 @@
 	</dependencies>
 	<repositories>
 		<repository>
-			<id>jvoiceSnapshot</id>
+			<id>jvoice</id>
 			<name>jVoice Maven Repository</name>
-			<url>http://repository-felixvelasco.forge.cloudbees.com/snapshot/</url>
+			<url>http://repository-felixvelasco.forge.cloudbees.com/release/</url>
 			<layout>default</layout>
 		</repository>
 	</repositories>
@@ -49,8 +49,32 @@
 		<snapshotRepository>
 			<id>jvoice-snapshots</id>
 			<name>jVoice Maven Repository</name>
-			<url>dav:https://repository-felixvelasco.forge.cloudbees.com/snapshot/</url>
+			<url>dav:https://repository-felixvelasco.forge.cloudbees.com/snapshot/snapshot/</url>
 			<layout>default</layout>
 		</snapshotRepository>
 	</distributionManagement>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<version>2.2.1</version>
+				<executions>
+					<execution>
+						<id>attach-sources</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+		<extensions> 
+			<extension> 
+				<groupId>org.apache.maven.wagon</groupId> 
+				<artifactId>wagon-webdav</artifactId> 
+				<version>1.0-beta-2</version> 
+			</extension> 
+		</extensions>
+	</build>
 </project>
