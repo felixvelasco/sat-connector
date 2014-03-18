@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 
-	<version>1.1.0-SNAPSHOT</version>
+	<version>1.2.0-SNAPSHOT</version>
 	<groupId>com.vectorsf</groupId>
 	<artifactId>jvoiceframework-sat-connector</artifactId>
 	<name>jvoiceframework-sat-connector</name>
@@ -17,7 +17,7 @@
 		<dependency>
 			<groupId>com.vectorsf</groupId>
 			<artifactId>jvoiceframework-core</artifactId>
-			<version>1.1.0-SNAPSHOT</version>
+			<version>[1.0.0,2.0.0)</version>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
@@ -35,7 +35,13 @@
 		<repository>
 			<id>jvoiceSnapshot</id>
 			<name>jVoice Maven Repository</name>
-			<url>http://repository-felixvelasco.forge.cloudbees.com/snapshot/</url>
+			<url>http://repository-felixvelasco.forge.cloudbees.com/snapshot/snapshot/</url>
+			<layout>default</layout>
+		</repository>
+		<repository>
+			<id>jvoice</id>
+			<name>jVoice Maven Repository</name>
+			<url>dav:https://repository-felixvelasco.forge.cloudbees.com/release/</url>
 			<layout>default</layout>
 		</repository>
 	</repositories>
@@ -49,7 +55,7 @@
 		<snapshotRepository>
 			<id>jvoice-snapshots</id>
 			<name>jVoice Maven Repository</name>
-			<url>dav:https://repository-felixvelasco.forge.cloudbees.com/snapshot/</url>
+			<url>dav:https://repository-felixvelasco.forge.cloudbees.com/snapshot/snapshot/</url>
 			<layout>default</layout>
 		</snapshotRepository>
 	</distributionManagement>
