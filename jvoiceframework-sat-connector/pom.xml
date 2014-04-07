@@ -41,7 +41,7 @@
 		<repository>
 			<id>jvoice</id>
 			<name>jVoice Maven Repository</name>
-			<url>dav:https://repository-felixvelasco.forge.cloudbees.com/release/</url>
+			<url>https://repository-felixvelasco.forge.cloudbees.com/release/</url>
 			<layout>default</layout>
 		</repository>
 	</repositories>
