@@ -7,6 +7,9 @@
 	<groupId>com.vectorsf</groupId>
 	<artifactId>jvoiceframework-sat-connector</artifactId>
 	<name>jvoiceframework-sat-connector</name>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
 
 	<dependencies>
 		<dependency>
